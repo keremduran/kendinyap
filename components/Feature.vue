@@ -30,5 +30,6 @@ export default {
 
 .feature__icon {
   max-width: 80px;
+  border-radius: 50%;
 }
 </style>

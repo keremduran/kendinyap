@@ -2,6 +2,7 @@
   <div v-editable="blok" class="teaser">
     <component v-if="slide" :blok="slide" :is="slide.component"></component>
     <div class="teaser__pag">
+      <h1 class="teaser__headline">{{ blok.headline }}</h1>
       <button @click="handleDotClick(index)"
               :key="index"
               v-for="(blok, index) in blok.body"
