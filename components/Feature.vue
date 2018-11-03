@@ -13,7 +13,7 @@ export default {
   computed: {
     resizedIcon () {
       if (typeof this.blok.icon !== 'undefined') {
-        return '//img2.storyblok.com/80x80' + this.blok.icon.replace('//a.storyblok.com', '')
+        return '//img2.storyblok.com/150x150' + this.blok.icon.replace('//a.storyblok.com', '')
       }
       return null
     }
@@ -25,11 +25,11 @@ export default {
 <style lang="scss">
 .feature {
   text-align: center;
-  padding: 30px 10px 100px;
+  padding: 1.7rem .5rem 6rem;
 }
 
 .feature__icon {
-  max-width: 80px;
+  width: 8rem;
   border-radius: 50%;
 }
 </style>

@@ -1,26 +1,36 @@
 <template>
-  <header class="top-header util__flex util__container">
-    <nav class="top-header__col">
-      <ul class="top-header__nav top-header__first-navi">
-        <li :key="index" v-for="(navitem, index) in $store.state.settings.main_navi">
-          <nuxt-link :class="'top-header__link top-header__'+navitem.name" :to="navitem.link.cached_url">
-            {{ navitem.name }}
-          </nuxt-link>
-        </li>
-      </ul>
-    </nav>
-    <a href="/" class="top-header__col top-header__logo">
-      <img src="//a.storyblok.com/f/42016/1096x313/0353bf6654/logo2.png">
-    </a>
-    <nav class="top-header__col top-header__second-navi">
-      <ul class="top-header__nav top-header__nav--right top-header__lang-navi">
-        <li>
-          <nuxt-link :class="'top-header__link'+isLangActive('en')" to="/">English</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link :class="'top-header__link'+isLangActive('tr')" to="/tr">Turkish</nuxt-link>
-        </li>
-      </ul>
+  <header class="top-header util__container">
+    <div class="util__flex logo-container util__flex-se">
+      <a href="/" class="top-header__logo">
+        <img src="//a.storyblok.com/f/42016/1096x313/0353bf6654/logo2.png">
+      </a>
+    </div>
+    <nav class="util__flex util__flex-sb">
+      <div class="top-header__col">
+        <ul class="util__flex util__flex-se top-header__nav top-header__first-navi">
+          <li class="link-container" :key="index" v-for="(navitem, index) in $store.state.settings.main_navi">
+            <nuxt-link :class="'top-header__link top-header__'+navitem.name" :to="navitem.link.cached_url">
+              {{ navitem.name }}
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
+      <div class="top-header__col">
+        <ul class="util__flex util__flex-se top-header__nav top-header__lang-navi">
+          <li class="link-container">
+            <nuxt-link
+              class="top-header__link"
+              :class="isLangActive('en')"
+              to="/">English</nuxt-link>
+          </li>
+          <li class="link-container">
+            <nuxt-link
+              class="top-header__link"
+              :class="isLangActive('tr')"
+              to="/tr">Turkish</nuxt-link>
+          </li>
+        </ul>
+      </div>
     </nav>
   </header>
 </template>
@@ -29,7 +39,7 @@
 export default {
   methods: {
     isLangActive(lang){
-      return lang === this.$store.state.language ? ' active-language' : ''
+      return lang === this.$store.state.language ? 'active-language' : ''
     }
   }
 }
@@ -38,14 +48,22 @@ export default {
 
 <style lang="scss">
   .top-header {
-    justify-content: space-between;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    ul {
+      margin: 0;
+      padding: 0;
+    }
     li {
-      display: inline-block;
       list-style-type: none;
-      padding-right: 1rem;
-      margin-right: 1rem;
+    }
+  }
+
+  .top-header__col {
+    min-width: 9.5rem; 
+    li {
+      margin-right: .5rem;
+      margin-left: .5rem;
     }
   }
 
@@ -60,26 +78,16 @@ export default {
     }
   }
 
-  // hard-coded Blog
+  // hard-coded Blog to keep the border with child comp
   .nuxt-link-active.top-header__Blog {
       border-bottom: .1rem solid black;
   }
 
   .top-header__logo {
-    text-align: center;
-    position: absolute;
-    left: 50%;
-
     img {
-      position: relative;
-      max-height: 60px;
-      left: -50%;
-      top: -15px;
+      height: 4rem;
+      width: 13.5rem;
     }
-  }
-
-  .top-header__second-navi {
-    text-align: right;
   }
 
   .top-header__lang-navi {

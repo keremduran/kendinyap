@@ -11,7 +11,10 @@ export default {
 </script>
 
 <style lang="scss">
-.slide img {
-  width: 100%;
+.slide {
+  max-width: 50rem;
+  img {
+      width: 100%;
+  }
 }
 </style>

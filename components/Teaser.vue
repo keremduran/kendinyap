@@ -1,6 +1,8 @@
 <template>
   <div v-editable="blok" class="teaser">
-    <component v-if="slide" :blok="slide" :is="slide.component"></component>
+    <div class="util__flex util__flex-se">
+      <component v-if="slide" :blok="slide" :is="slide.component"></component>
+    </div>
     <div class="teaser__pag">
       <h1 class="teaser__headline">{{ blok.headline }}</h1>
       <button @click="handleDotClick(index)"
@@ -46,7 +48,7 @@ export default {
 .teaser__pag {
   width: 100%;
   text-align: center;
-  margin: 30px 0;
+  margin: 1.6rem 0;
 }
 
 .teaser__pag-dot {

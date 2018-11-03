@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="util__container">
     <top-header/>
     <main id="main" role="main">
       <nuxt/>
