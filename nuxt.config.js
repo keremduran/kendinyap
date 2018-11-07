@@ -34,13 +34,15 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~/assets/style/app.styl'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/components'
+    '~/plugins/components',
+    '~/plugins/vuetify'
   ],
 
   /*
@@ -67,11 +69,28 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    transpile: [/^vuetify/],
+		babel: {
+		  plugins: [
+			['transform-imports', {
+			  'vuetify': {
+				'transform': 'vuetify/es5/components/${member}',
+				'preventFullImport': true
+			  }
+			}]
+		  ]
+		},
     /*
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
+			if (process.server) {
+				config.externals = [
+					nodeExternals({
+						whitelist: [/^vuetify/]
+					})
+				]
+			}      
     }
   }
 }
